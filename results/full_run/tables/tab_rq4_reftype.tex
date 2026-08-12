@@ -1,0 +1,16 @@
+\begin{table}[t]\centering
+\caption{RQ4 selection quality split by reference type: rate of selecting the best candidate. On exact-value datasets (\dataset{synthetic}, \dataset{IHDP}) this is the \emph{truly} best policy; on RCT-reference datasets (\dataset{Jobs}, \dataset{Hillstrom}, \dataset{Lenta}) it is the policy ranked best by the noisy HT reference. Three-candidate slate; uniform-random baseline $=1/3\approx0.33$. \textbf{Per-candidate (self-aligned) logging design} --- see Table~\ref{tab:rq4-logger}.}
+\label{tab:rq4-reftype}
+\begin{tabular}{lrr}
+\toprule
+estimator & exact-value (truly best) & RCT-reference (reference-best) \\
+\midrule
+dm & 0.827 & 0.542 \\
+dr & 0.777 & 0.538 \\
+switch\_dr & 0.773 & 0.536 \\
+snips & 0.693 & 0.520 \\
+ips & 0.607 & 0.551 \\
+mIPS & 0.610 & 0.560 \\
+\bottomrule
+\end{tabular}
+\end{table}

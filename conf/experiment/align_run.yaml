@@ -1,0 +1,5 @@
+# Misaligned-logging robustness check: cross logging and target policies.
+n_seeds: 10
+budgets: [0.1, 0.3, 0.5]
+overlap_temperatures: [0.5, 2.0, 5.0]
+candidate_policies: [t_learner, s_learner]

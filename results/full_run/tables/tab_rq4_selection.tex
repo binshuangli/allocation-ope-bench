@@ -1,0 +1,16 @@
+\begin{table}[t]\centering
+\caption{RQ4 policy selection: rate of selecting the reference-best policy (the truly best on exact-value datasets, the HT-reference-best on RCT datasets; higher better), mean normalized regret (lower better), and SharpeRatio@$k{\geq}2$ (higher better). \textbf{This table uses the per-candidate (self-aligned) logging design}, in which each candidate is scored on a log built from its own score, so it compares policy--logger pairs rather than policies. Section~\ref{sec:rq4} shows the model-based-over-IPS margin is nonetheless close to what a shared log gives (about $1.2\times$); see Table~\ref{tab:rq4-logger} for the common-logger results, which we regard as the primary selection evidence.}
+\label{tab:rq4-selection}
+\begin{tabular}{lrrr}
+\toprule
+estimator & correct rate & norm. regret & Sharpe@$k{\geq}2$ \\
+\midrule
+dm & 0.656 & 0.153 & 11.909 \\
+dr & 0.633 & 0.148 & 11.879 \\
+switch\_dr & 0.631 & 0.149 & 11.881 \\
+snips & 0.589 & 0.160 & 11.734 \\
+mIPS & 0.580 & 0.172 & 11.023 \\
+ips & 0.573 & 0.179 & 11.019 \\
+\bottomrule
+\end{tabular}
+\end{table}

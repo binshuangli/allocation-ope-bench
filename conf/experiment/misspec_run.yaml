@@ -1,0 +1,12 @@
+# Outcome-model misspecification experiment (review item 5).
+# Same protocol as the main runs but with the shared mu-hat base learner
+# swapped via `experiment.outcome_model` (lightgbm | stump | ridge):
+#   lightgbm — well-specified reference
+#   stump    — weak but honest (depth-2 trees, 20 rounds)
+#   ridge    — misspecified (linear on nonlinear surfaces)
+# Datasets: exact-truth sets with nonlinear surfaces, where misspecification bites.
+n_seeds: 10
+budgets: [0.1, 0.3, 0.5]
+overlap_temperatures: [0.5, 2.0, 5.0]
+candidate_policies: [t_learner, s_learner, random]
+outcome_model: lightgbm

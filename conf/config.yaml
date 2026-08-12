@@ -1,0 +1,22 @@
+# Root Hydra config for allocation-ope-bench
+defaults:
+  - _self_
+  - experiment: default
+
+seed: 42
+results_dir: results
+smoke: false
+n_jobs: 1  # joblib workers; -1 = all cores
+max_n: 50000  # cap real datasets to this many rows (null = no cap); keeps the
+              # sweep tractable on large RCTs (lenta ~700k, x5, criteo ~13M). A
+              # uniform subsample preserves the known constant propensity.
+
+# List of datasets to include in one run.
+# Each entry must match a loader in allocation_ope_bench.data (or "synthetic").
+datasets:
+  - name: synthetic
+    n_train: 5000
+    n_test: 2000
+    n_features: 10
+    treatment_rate: 0.5
+    effect_size: 1.0

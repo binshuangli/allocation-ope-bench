@@ -1,0 +1,7 @@
+# Optimization-bias (optimizer's-curse) experiment.
+# Overlap is fixed at temperature=0 inside the experiment (it isolates the
+# in-sample-fitting curse), so overlap_temperatures is unused here.
+n_seeds: 10
+budgets: [0.05, 0.1, 0.2, 0.3, 0.5]
+overlap_temperatures: [0.0]
+candidate_policies: [t_learner]  # unused; policy is derived in-sample

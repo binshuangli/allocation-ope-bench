@@ -1,0 +1,8 @@
+dataset,estimator,rel_rmse_shared,rel_rmse_disjoint
+jobs,bips,0.1167,0.1908
+jobs,dm,0.1041,0.1569
+jobs,dr,0.1054,0.1508
+jobs,ips,0.1173,0.1904
+jobs,perturbation_dr,0.1017,0.1625
+jobs,snips,0.1086,0.1515
+jobs,switch_dr,0.1054,0.1544

@@ -1,0 +1,16 @@
+\begin{table}[t]\centering
+\caption{RQ1 estimator accuracy: median relative RMSE (RMSE$/|V_{\mathrm{ref}}|$, normalized by the configuration-level reference value --- exact where known, else the HT reference estimate), lower is better. Best per column in bold. The cross-dataset averages are reported \emph{separately} for exact-value and HT-reference datasets rather than pooled, since the two measure error against different kinds of reference.}
+\label{tab:rq1-accuracy}
+\begin{tabular}{lrrrrrrr}
+\toprule
+estimator & hillstrom & ihdp & jobs & lenta & synthetic & mean (exact) & mean (RCT-ref) \\
+\midrule
+dm & \textbf{0.022} & \textbf{0.014} & 0.066 & \textbf{0.026} & \textbf{0.044} & \textbf{0.029} & 0.038 \\
+dr & 0.023 & 0.015 & 0.059 & 0.028 & 0.046 & 0.030 & \textbf{0.037} \\
+switch\_dr & 0.023 & 0.015 & \textbf{0.058} & 0.028 & 0.046 & 0.030 & \textbf{0.037} \\
+snips & \textbf{0.022} & 0.025 & 0.063 & 0.030 & 0.058 & 0.042 & 0.038 \\
+ips & \textbf{0.022} & 0.052 & 0.068 & 0.030 & 0.062 & 0.057 & 0.040 \\
+mIPS & \textbf{0.022} & 0.051 & 0.068 & 0.030 & 0.062 & 0.057 & 0.040 \\
+\bottomrule
+\end{tabular}
+\end{table}

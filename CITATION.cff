@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use this benchmark, please cite the paper below."
+type: software
+title: "allocation-ope-bench"
+abstract: >
+  A reproducible benchmark for offline evaluation of budget-constrained
+  allocation policies. Stress-tests six fixed-policy OPE estimators (plus a
+  smoothed-policy sensitivity estimator scored against its own estimand) across five public
+  datasets under varying logging overlap and policy-fitting regimes; includes a
+  dedicated optimizer's-curse experiment and practitioner decision guide.
+authors:
+  - family-names: Li
+    given-names: Binshuang
+version: "0.1.0"
+date-released: "2026-06-29"
+license: MIT
+preferred-citation:
+  type: article
+  title: >
+    When Can You Trust Offline Evaluation of Equal-Cost Top-k Allocation?
+    A Controlled, Reproducible Benchmark and Practitioner's Guide
+  authors:
+    - family-names: Li
+      given-names: Binshuang
+  notes: "Under review at Transactions on Machine Learning Research"
+  year: 2026

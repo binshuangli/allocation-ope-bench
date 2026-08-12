@@ -1,0 +1,25 @@
+\begin{table}[t]\centering
+\caption{RQ3 optimizer's curse, per dataset. Plain-DR $|$bias$|$ (in-sample policy value) and the $|$bias$|$ change from nuisance-only cross-fitting (same fixed-policy estimand as DR); and the bias reduction under honest \emph{algorithm} evaluation (a different estimand --- the learning procedure's value). ``material optimistic bias'' is an explicit criterion: plain DR's mean \emph{signed} bias exceeds $2\%$ of $|V_{\mathrm{ref}}|$, i.e.\ DR is materially \emph{optimistic} (third column). It is signed, not absolute, on purpose --- \dataset{Jobs} ($-0.2\%$) and \dataset{Lenta} ($-3.8\%$) carry non-trivial $|$bias$|$ but are not optimistic, so there is no upward reuse bias to remove; \dataset{IHDP} ($+6.9\%$) and \dataset{synthetic} ($+23.6\%$) are flagged. DR $|$bias$|$ is shown both raw and as a fraction of $|V_{\mathrm{ref}}|$, since raw magnitudes are not comparable across datasets with different outcome scales.}
+\label{tab:rq3-debias}
+\small
+\begin{tabular}{lcrrrrr}
+\toprule
+dataset & material optimistic & DR bias$/|V|$ & DR $|$bias$|$ & DR $|$bias$|/|V|$ & nuis.\ x-fit & honest-algo. \\
+ & bias? & (signed) & & & \% removed & \% removed \\
+\midrule
+hillstrom & no & -0.000 & 0.001 & 0.005 & -- & -- \\
+ihdp & yes & 0.069 & 0.242 & 0.071 & -18.3 & 68.5 \\
+jobs & no & -0.002 & 0.034 & 0.041 & -- & -- \\
+lenta & no & -0.038 & 0.007 & 0.038 & -- & -- \\
+synthetic & yes & 0.236 & 0.181 & 0.236 & -36.0 & 91.7 \\
+\midrule
+\multicolumn{7}{l}{\emph{six ACIC-style known-effect DGPs on real \dataset{IHDP} covariates (Section~\ref{sec:robustness}):}} \\
+acic\_s1 & yes & 0.059 & 0.140 & 0.059 & -26.7 & 57.8 \\
+acic\_s2 & yes & 0.394 & 0.858 & 0.394 & -16.0 & 77.7 \\
+acic\_s3 & yes & 0.092 & 0.200 & 0.092 & -19.3 & 82.2 \\
+acic\_s4 & yes & 0.381 & 0.891 & 0.381 & -16.5 & 79.7 \\
+acic\_s5 & yes & 0.064 & 0.137 & 0.065 & -19.3 & 71.1 \\
+acic\_s6 & yes & 0.145 & 0.303 & 0.145 & -17.1 & 77.3 \\
+\bottomrule
+\end{tabular}
+\end{table}

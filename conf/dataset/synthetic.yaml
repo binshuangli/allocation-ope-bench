@@ -1,0 +1,6 @@
+name: synthetic
+n_train: 5000
+n_test: 2000
+n_features: 10
+treatment_rate: 0.5
+effect_size: 1.0

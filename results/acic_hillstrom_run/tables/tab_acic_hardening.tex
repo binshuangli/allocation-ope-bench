@@ -1,0 +1,16 @@
+\begin{table}[t]\centering
+\caption{Known-effect hardening: median relative RMSE on six ACIC-2017-style DGP settings over the real \dataset{IHDP} covariates (S1/S2 linear, S3/S4 nonlinear, S5/S6 step-subgroup surfaces; odd $=$ low noise, even $=$ high). Best per column in bold.}
+\label{tab:acic-hardening}
+\begin{tabular}{lrrrrrrr}
+\toprule
+estimator & acic_hi_s1 & acic_hi_s2 & acic_hi_s3 & acic_hi_s4 & acic_hi_s5 & acic_hi_s6 & mean (exact) \\
+\midrule
+dm & \textbf{0.002} & \textbf{0.019} & \textbf{0.001} & \textbf{0.003} & \textbf{0.002} & \textbf{0.006} & \textbf{0.006} \\
+dr & 0.003 & 0.021 & \textbf{0.001} & 0.004 & \textbf{0.002} & 0.007 & \textbf{0.006} \\
+switch\_dr & 0.003 & 0.021 & \textbf{0.001} & 0.004 & \textbf{0.002} & 0.007 & \textbf{0.006} \\
+snips & 0.008 & 0.021 & 0.005 & 0.007 & 0.005 & 0.010 & 0.009 \\
+ips & 0.014 & 0.026 & 0.016 & 0.017 & 0.014 & 0.018 & 0.018 \\
+mIPS & 0.014 & 0.026 & 0.016 & 0.017 & 0.014 & 0.018 & 0.018 \\
+\bottomrule
+\end{tabular}
+\end{table}

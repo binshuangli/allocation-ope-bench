@@ -1,0 +1,4 @@
+n_seeds: 1
+budgets: [0.3]
+overlap_temperatures: [2.0]
+candidate_policies: [t_learner, s_learner]
