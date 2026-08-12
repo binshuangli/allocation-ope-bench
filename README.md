@@ -91,23 +91,54 @@ the constant propensity.
 
 ## Key findings
 
-1. **Overlap is the dominant driver of importance-weighting error.** IPS-family
-   estimators degrade sharply under the poor overlap that deterministic
-   allocation induces; DM and DR-family are robust. ESS fraction and support
-   deficiency predict IPS error (Spearman |ρ| ≈ 0.43–0.48); a fragility screen
-   validated out-of-DGP flags fragile evaluations before ground truth.
+Each is stated at the strength the evidence supports; the paper's Section 4.1
+lists what the benchmark *cannot* establish.
 
-2. **The optimizer's curse is conditional, and not fixed by nuisance
-   cross-fitting.** Plain DR is materially biased only on continuous known-effect
-   data (synthetic, IHDP); nuisance-only cross-fitting does *not* remove it (it
-   can worsen it), while honest policy-level splitting cuts the bias magnitude
-   69–92% by evaluating the learning procedure. On binary RCTs no material bias
-   is detected. Report per-dataset, never pooled.
+1. **Overlap is governed by logger–target *action* alignment, not by logging
+   sharpness.** For a deterministic top-k target the weight is
+   `1/pi_b(a_target(x)|x)`, so what matters is the logger's probability of the
+   *target's actions*. Over the tested range, sharpening a logger built from the
+   target's own score barely moves overlap; action-level disagreement collapses
+   it (IPS failure 8.3% / 13.3% / 31.7% across three logger regimes). Effective
+   sample size ranks this risk **across logging environments** (ROC-AUC 0.85
+   in-sample; 0.83 and 0.91 on two held-out families) — but only weakly *within*
+   a single fixed log (median Spearman rho = -0.11), and its cut points do not
+   transfer.
 
-3. **DM wins on selection.** DM selects the reference-best policy ~53–69% of the
-   time vs ~27–29% for IPS (exact-value vs RCT-reference datasets), with the
-   lowest normalized regret. Policy selection with OPE is substantially harder
-   than point estimation.
+2. **The optimizer's curse is not fixed by cross-fitting the outcome nuisance.**
+   When the rule is fit on the data used to evaluate it, cross-fitting the
+   nuisance alone leaves the reuse bias in place and makes it *worse* (-16% to
+   -36% across eight known-effect regimes). Honest policy-level splitting
+   reduces bias magnitude by 58–92%, but by targeting the learning procedure's
+   value — a change of estimand, not a de-biasing of the full-sample policy.
+   The sign is tested, not derived: a normal-means toy leaves total DR optimism
+   invariant to the nuisance, so the effect requires covariate-indexed structure.
+
+3. **Propensity-estimation error is the largest degradation measured, and can
+   invert the diagnostic.** Replacing the exact propensity with an out-of-fold
+   estimate raises IPS failure from 6.3% to 37–63% of cells — dwarfing the
+   2.8–11.7% from changing the logger regime — and a poor propensity model does
+   not merely weaken the ESS screen but inverts it. A credible propensity model
+   is the screen's prerequisite.
+
+4. **Estimator accuracy: model-based methods lead where truth is exact.** On
+   exact-value datasets DM (0.029) and the DR family (0.030) beat the IPS family
+   (0.057) by roughly 2x. On randomized-trial-reference datasets the spread is
+   0.003, which we do *not* read as a ranking — a noisy reference adds a common
+   error floor. Exact-value and HT-reference results are never pooled.
+
+5. **Policy selection depends on the candidate slate and the metric more than on
+   the logging design.** We detect no logging-design effect that survives
+   dataset-level clustering; the slate effect is larger than anything we could
+   resolve. One robust pathology: IPS over-selects the easiest-to-evaluate
+   candidate (up to 2.8x its true-best rate), with DM showing the same tendency
+   at design-dependent strength.
+
+6. **Validated against a non-simulated reference.** Every exact-value surface in
+   the benchmark is simulated, so the mechanisms are additionally checked on
+   Twins, whose evaluation reference is read from recorded paired outcomes: the
+   RQ1 ordering (at a larger margin), the alignment mechanism, and the RQ3 sign
+   all replicate, while the calibrated cut points do not.
 
 ---
 
