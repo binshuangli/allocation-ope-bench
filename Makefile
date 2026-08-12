@@ -250,7 +250,7 @@ repro-propensity:
 submission-supplement:
 	@test -s .anon-patterns || { echo "REFUSING: .anon-patterns not configured"; exit 1; }
 	@rm -rf build/supp && mkdir -p build/supp
-	@cp -R src conf tests results build/supp/
+	@cp -R src conf tests scripts results build/supp/
 	@cp Makefile pyproject.toml build/supp/
 	@grep -v "^-e " requirements.lock > build/supp/requirements.lock
 	@sed -E 's/Copyright \(c\) ([0-9]+).*/Copyright (c) \1 Anonymous Authors (identity withheld for double-blind review)/' LICENSE > build/supp/LICENSE

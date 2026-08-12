@@ -389,7 +389,20 @@ def counts():
 
 def main() -> int:
     sys.path.insert(0, str(ROOT / "src"))
-    srcs = {p: p.read_text() for p in TEX}
+    # The released supplement ships code and results but not the manuscript
+    # sources, so the verbatim-string assertions cannot run there. Recomputing
+    # the values from results/ still demonstrates reproducibility, so degrade to
+    # printing them rather than failing on absent .tex files.
+    srcs = {p: p.read_text() for p in TEX if p.exists()}
+    if not srcs:
+        print("Manuscript sources not present: printing recomputed values only "
+              "(string assertions require the .tex files).\n")
+        for name, computed, _ in counts():
+            print(f"  {name:28s} {computed}")
+        for name, value in checks():
+            print(f"  {name:28s} {value}")
+        print("\nAll values recomputed from results/.")
+        return 0
     bad = []
     for name, computed, _ in counts():
         missing = [str(p.relative_to(ROOT)) for p, txt in srcs.items() if computed not in txt]
