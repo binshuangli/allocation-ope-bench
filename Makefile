@@ -217,12 +217,13 @@ repro-logger-alignment-acic-hillstrom:
 # only file carrying identifying details (main.tex falls back to an anonymous block via
 # \IfFileExists). Verifies the result is clean before writing the tarball.
 submission-archive:
+	@test -s .anon-patterns || { echo "REFUSING: .anon-patterns not configured"; exit 1; }
 	@rm -rf build/anon && mkdir -p build/anon/paper
 	@cp paper_compact_readable/main.tex paper_compact_readable/refs.bib paper_compact_readable/tmlr.sty paper_compact_readable/tmlr.bst paper_compact_readable/fancyhdr.sty build/anon/paper/
 	@cp -RL paper_compact_readable/tables paper_compact_readable/figures build/anon/paper/
-	@if grep -rlniE "binshuang|newlbs|independent researcher" build/anon/ >/dev/null 2>&1; then \
+	@if grep -rlniE "$$(cat .anon-patterns)" build/anon/ >/dev/null 2>&1; then \
 		echo "REFUSING: identifying strings found in the archive:"; \
-		grep -rlniE "binshuang|newlbs|independent researcher" build/anon/; exit 1; fi
+		grep -rlniE "$$(cat .anon-patterns)" build/anon/; exit 1; fi
 	@cd build && tar czf ../submission-anon.tar.gz anon && cd .. && rm -rf build/anon
 	@echo "wrote submission-anon.tar.gz (verified free of identifying strings)"
 
@@ -247,6 +248,7 @@ repro-propensity:
 # write the tarball if any identifying string survives. check_paper.py is excluded only
 # because it contains the scrub pattern itself.
 submission-supplement:
+	@test -s .anon-patterns || { echo "REFUSING: .anon-patterns not configured"; exit 1; }
 	@rm -rf build/supp && mkdir -p build/supp
 	@cp -R src conf tests results build/supp/
 	@cp Makefile pyproject.toml build/supp/
@@ -258,7 +260,7 @@ submission-supplement:
 		"Every reproduction target is listed in the paper's Appendix B; results/ holds" \
 		"the raw parquets each figure and table regenerates from (make analyze)." > build/supp/README_ANON.md
 	@python3 scripts/strip_packaging_targets.py build/supp/Makefile
-	@if grep -rlIiE "binshuang|newlbs|independent researcher" build/supp/ ; then \
+	@if grep -rlIiE "$$(cat .anon-patterns)" build/supp/ ; then \
 		echo "REFUSING: identifying strings found above"; exit 1; fi
 	@cd build && tar czf ../supplement-anon.tar.gz supp && cd .. && rm -rf build/supp
 	@echo "wrote supplement-anon.tar.gz (code+configs+tests+parquets, scrub-verified)"
