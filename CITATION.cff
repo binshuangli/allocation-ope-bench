@@ -14,6 +14,10 @@ authors:
 version: "0.1.0"
 date-released: "2026-06-29"
 license: MIT
+identifiers:
+  - type: other
+    value: "arXiv:2608.12489"
+    description: "arXiv preprint of the accompanying paper"
 preferred-citation:
   type: article
   title: >
@@ -22,4 +26,6 @@ preferred-citation:
   authors:
     - family-names: Li
       given-names: Binshuang
+  journal: "arXiv preprint arXiv:2608.12489"
+  url: "https://arxiv.org/abs/2608.12489"
   year: 2026

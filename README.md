@@ -11,7 +11,7 @@ curse when the policy is fit on the same data it is evaluated on.
 
 > **Paper:** *When Can You Trust Offline Evaluation of Equal-Cost Top-k Allocation?
 > A Controlled, Reproducible Benchmark and Practitioner's Guide* — Li (2026).
-> Preprint: arXiv (identifier added on posting).
+> Preprint: [arXiv:2608.12489](https://arxiv.org/abs/2608.12489).
 
 > **Status:** the manuscript's numbers are regenerated from `results/` by
 > `make analyze`, and `make check-numbers` re-derives ~75 headline values from
@@ -186,10 +186,14 @@ benchmark's own data (see the docstring of
 
 ```bibtex
 @article{li2026allocationope,
-  title   = {When Can You Trust Offline Evaluation of Equal-Cost Top-$k$ Allocation?
-             {A} Controlled, Reproducible Benchmark and Practitioner's Guide},
-  author  = {Li, Binshuang},
-  year    = {2026},
+  title        = {When Can You Trust Offline Evaluation of Equal-Cost Top-$k$ Allocation?
+                  {A} Controlled, Reproducible Benchmark and Practitioner's Guide},
+  author       = {Li, Binshuang},
+  journal      = {arXiv preprint arXiv:2608.12489},
+  year         = {2026},
+  eprint       = {2608.12489},
+  archivePrefix = {arXiv},
+  primaryClass = {cs.LG},
 }
 ```
 
